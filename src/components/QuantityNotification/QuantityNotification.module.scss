@@ -1,0 +1,32 @@
+.wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+}
+
+.inner {
+  background-color: var(--color-notification);
+  color: var(--white);
+  height: 19px;
+  min-width: 21px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50px;
+  font-size: 1.3rem;
+  font-weight: 550;
+  position: absolute;
+  line-height: 14px;
+  padding: 2px;
+}
+
+.dot {
+  position: absolute;
+  background-color: var(--color-notification);
+  border-radius: 50%;
+  height: 11px;
+  min-width: 11px;
+  width: 11px;
+}

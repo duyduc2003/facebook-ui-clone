@@ -1,0 +1,45 @@
+// styles menu
+.popper-menu {
+  min-width: 200px !important;
+  width: 200px;
+  .header-menu {
+    .heading-menu {
+      font-size: 2rem;
+      color: var(--primary-text);
+      padding: 16px 12px;
+      line-height: 1.2rem;
+    }
+  }
+
+  .body-menu {
+    padding: 0 8px;
+    padding-bottom: 8px;
+    .separation {
+      background-color: var(--separation);
+      height: 1px;
+      border-width: 0;
+      margin: 8px 8px;
+    }
+    .btn-menu-items {
+      width: 100%;
+      justify-content: flex-start;
+
+      .icon-menu {
+        padding: 8px;
+        border-radius: 50%;
+        background-color: var(--hover-overlay);
+        margin-right: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .title {
+        color: var(--primary-text);
+        font-size: 1.4rem;
+        font-weight: 500;
+        line-height: 1.3333;
+        text-align: left;
+      }
+    }
+  }
+}

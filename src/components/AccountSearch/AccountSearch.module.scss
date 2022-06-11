@@ -1,0 +1,27 @@
+.wrapper {
+  width: 100%;
+  min-width: 300px;
+  justify-content: flex-start;
+  min-height: 48px;
+}
+
+.inner {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  width: 100%;
+  padding: 4px 0 !important;
+  .avatar-user {
+    height: 36px;
+    width: 36px;
+    border-radius: 50%;
+    margin-right: 12px;
+    margin-left: 2px;
+  }
+
+  .username {
+    font-size: 1.4rem;
+    color: var(--primary-text);
+    font-weight: 450;
+  }
+}

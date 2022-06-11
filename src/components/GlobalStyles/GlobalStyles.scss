@@ -1,0 +1,66 @@
+@import 'normalize.css';
+
+:root {
+  --primary: #1b74e4;
+  --accent: #1876f2;
+  --secondary-btn-background: #e4e6eb;
+  --color-notification: #e41e3f;
+  --white: #fff;
+  --black: #000;
+  --primary-text: #050505;
+  --primary-background: #f0f2f5;
+  --hover-overlay: #0000000d;
+  --shadow-1: rgba(0, 0, 0, 0.1);
+  --shadow-2: rgba(0, 0, 0, 0.2);
+  --shadow-inset: rgba(255, 255, 255, 0.5);
+  --separation: #ced0d4;
+  --filter-secondary-icon: invert(39%) sepia(21%) saturate(200%) saturate(109.5%) hue-rotate(174deg)
+    brightness(94%) contrast(86%);
+  --disabled-icon: #bcc0c4;
+
+  --header-height: 56px;
+
+  --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: var(--font-family);
+  font-size: 1.6rem;
+  line-height: 1.5;
+  text-rendering: optimizeSpeed;
+}
+
+button,
+input,
+[tabindex] {
+  outline: none;
+  border: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+a[href] {
+  color: var(--text-color);
+  text-decoration: none;
+}
+
+// reset css Tippy/react
+.tippy-box {
+  background-color: #383939;
+  border-radius: 8px;
+  font-size: 1.2rem;
+  line-height: 1.4;
+  padding: 2px 5px;
+}
+
+.tippy-arrow {
+  display: none;
+}

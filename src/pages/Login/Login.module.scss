@@ -1,0 +1,21 @@
+.wrapper {
+  background-color: var(--primary-background);
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.inner {
+  display: flex;
+  justify-content: center;
+}
+
+.slogan {
+  h2 {
+    font-size: 2.4rem;
+    line-height: 28px;
+    width: auto;
+    font-weight: 400;
+  }
+}
