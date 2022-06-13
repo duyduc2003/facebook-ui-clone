@@ -28,26 +28,31 @@
 .popper-search {
   padding: 8px;
   width: 320px;
-  .header-search {
-    display: flex;
-    align-items: center;
 
-    padding-bottom: 8px;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
 
-    .title {
-      font-size: 1.6rem;
-      color: var(--primary-text);
-      flex: 1;
-      font-weight: 600;
-      padding-left: 8px;
-    }
+.header-search {
+  display: flex;
+  align-items: center;
 
-    .btn-edit {
-      color: var(--primary);
-      font-size: 1.4rem;
-    }
+  padding-bottom: 8px;
+
+  .title {
+    font-size: 1.6rem;
+    color: var(--primary-text);
+    flex: 1;
+    font-weight: 600;
+    padding-left: 8px;
   }
 
-  .body-search {
+  .btn-edit {
+    color: var(--primary);
+    font-size: 1.4rem;
   }
+}
+
+.body-search {
 }

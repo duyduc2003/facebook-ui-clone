@@ -5,6 +5,7 @@ import {
   HomePage,
   LoginPage,
   MessengerPage,
+  NotificationsPage,
   Page_Page,
   UserPage,
   WatchPage,
@@ -20,6 +21,7 @@ export const PUBLIC_ROUTES = [
   { path: configs.routes.WATCH, component: WatchPage },
   { path: configs.routes.MESSENGER, component: MessengerPage },
   { path: configs.routes.PAGE_, component: Page_Page },
+  { path: configs.routes.NOTIFICATION, component: NotificationsPage, layout: HeaderLayout },
 ];
 
 export const PRIVATE_ROUTES = [];

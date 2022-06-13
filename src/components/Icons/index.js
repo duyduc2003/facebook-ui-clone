@@ -136,7 +136,7 @@ export const IconPost = ({ className, height = 20, width = 20, style = {} }) => 
   <i
     className={className}
     style={{
-      backgroundImage: css.url(images.listIcon1),
+      backgroundImage: css.url(images.icons.ICON_1),
       backgroundPosition: '-110px -70px',
       backgroundSize: '190px 146px',
       width,
@@ -152,7 +152,7 @@ export const IconPostsInGroup = ({ className, height = 20, width = 20, style = {
   <i
     className={className}
     style={{
-      backgroundImage: css.url(images.listIcon2),
+      backgroundImage: css.url(images.icons.ICON_2),
       backgroundPosition: '0px -1144px',
       backgroundSize: '26px 1726px',
       width,
@@ -168,7 +168,7 @@ export const IconNews = ({ className, height = 20, width = 20, style = {} }) => 
   <i
     className={className}
     style={{
-      backgroundImage: css.url(images.listIcon3),
+      backgroundImage: css.url(images.icons.ICON_3),
       backgroundPosition: '0px -636px',
       backgroundSize: '34px 788px',
       width,
@@ -183,7 +183,7 @@ export const IconGroupFull = ({ className, height = 20, width = 20, style = {} }
   <i
     className={className}
     style={{
-      backgroundImage: css.url(images.listIcon2),
+      backgroundImage: css.url(images.icons.ICON_2),
       backgroundPosition: '0px -330px',
       backgroundSize: '26px 1726px',
       width,
@@ -199,7 +199,7 @@ export const IconFlag = ({ className, height = 20, width = 20, style = {} }) => 
   <i
     className={className}
     style={{
-      backgroundImage: css.url(images.listIcon2),
+      backgroundImage: css.url(images.icons.ICON_2),
       backgroundPosition: '0px -396px',
       backgroundSize: '26px 1726px',
       width,
@@ -215,7 +215,7 @@ export const Icon3Dot = ({ className, height = 20, width = 20, style = {} }) => 
   <i
     className={className}
     style={{
-      backgroundImage: css.url(images.listIcon5),
+      backgroundImage: css.url(images.icons.ICON_5),
       backgroundPosition: '0 -92px',
       backgroundSize: '190px 146px',
       width,
@@ -231,7 +231,7 @@ export const IconOpenMessage = ({ className, height = 20, width = 20, style = {}
   <i
     className={className}
     style={{
-      backgroundImage: css.url(images.listIcon4),
+      backgroundImage: css.url(images.icons.ICON_4),
       backgroundPosition: '0px -724px',
       backgroundSize: '34px 972px',
       width,
@@ -247,7 +247,7 @@ export const IconWriteMessage = ({ className, height = 16, width = 16, style = {
   <i
     className={className}
     style={{
-      backgroundImage: css.url(images.listIcon6),
+      backgroundImage: css.url(images.icons.ICON_6),
       backgroundPosition: '0px -1414px',
       backgroundSize: '34px 1666px',
       width,
@@ -283,4 +283,114 @@ export const IconUserSeen = ({ className, src, alt }) => (
     objectFit={'cover'}
     style={{}}
   />
+);
+
+export const IconTick = ({ className, height = 20, width = 20, style = {} }) => (
+  <i
+    className={className}
+    style={{
+      backgroundImage: css.url(images.icons.ICON_7),
+      backgroundPosition: '0px -114px',
+      backgroundSize: '190px 216px',
+      width,
+      height,
+      backgroundRepeat: 'no-repeat',
+      display: 'inline-block',
+      ...style,
+    }}
+  ></i>
+);
+
+export const IconMessageRegular = ({ className, height = 20, width = 20, style = {} }) => (
+  <i
+    className={className}
+    style={{
+      backgroundImage: css.url(images.icons.ICON_7),
+      backgroundPosition: '-52px -88px',
+      backgroundSize: '190px 216px',
+      width,
+      height,
+      backgroundRepeat: 'no-repeat',
+      display: 'inline-block',
+      ...style,
+    }}
+  ></i>
+);
+
+export const IconNotificationRegular = ({ className, height = 20, width = 20, style = {} }) => (
+  <i
+    className={className}
+    style={{
+      backgroundImage: css.url(images.icons.ICON_8),
+      backgroundPosition: '0px -218px',
+      backgroundSize: '38px 580px',
+      width,
+      height,
+      backgroundRepeat: 'no-repeat',
+      display: 'inline-block',
+      ...style,
+    }}
+  ></i>
+);
+export const IconUserRegular = ({ className, height = 20, width = 20, style = {} }) => (
+  <i
+    className={className}
+    style={{
+      backgroundImage: css.url(images.icons.ICON_4),
+      backgroundPosition: '0px -664px',
+      backgroundSize: '34px 950px',
+      width,
+      height,
+      backgroundRepeat: 'no-repeat',
+      display: 'inline-block',
+      ...style,
+    }}
+  ></i>
+);
+export const IconTrash = ({ className, height = 20, width = 20, style = {} }) => (
+  <i
+    className={className}
+    style={{
+      backgroundImage: css.url(images.icons.ICON_4),
+      backgroundPosition: '0px -836px',
+      backgroundSize: '34px 950px',
+      width,
+      height,
+      backgroundRepeat: 'no-repeat',
+      display: 'inline-block',
+      ...style,
+    }}
+  ></i>
+);
+
+export const IconOpenNotification = ({ className, height = 20, width = 20, style = {} }) => (
+  <i
+    className={className}
+    style={{
+      backgroundImage: css.url(images.icons.ICON_9),
+      backgroundPosition: '0px 0px',
+      backgroundSize: '22px 44px',
+      width,
+      height,
+      backgroundRepeat: 'no-repeat',
+      display: 'inline-block',
+      ...style,
+    }}
+  ></i>
+);
+
+export const IconRectangleClose = ({ className, height = 20, width = 20, style = {} }) => (
+  <i
+    className={className}
+    style={{
+      backgroundImage: css.url(images.icons.ICON_4),
+      backgroundPosition: '0px -472px',
+      backgroundSize: '34px 994px',
+      width,
+      height,
+      backgroundRepeat: 'no-repeat',
+      display: 'inline-block',
+      ...style,
+    }}
+  ></i>
 );

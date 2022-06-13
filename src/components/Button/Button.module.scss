@@ -10,6 +10,8 @@
   background-color: transparent;
   border-radius: 8px;
   user-select: none;
+
+  position: relative;
 }
 
 .hoverOverlay {
@@ -31,4 +33,13 @@
 
 .hoverOverlayPrimary {
   background-color: #e7f3ff !important;
+}
+
+.active {
+  color: var(--primary-deemphasized-button-text) !important;
+  background-color: var(--primary-deemphasized-button-background) !important;
+
+  &:hover {
+    background-color: #4493fa37 !important;
+  }
 }

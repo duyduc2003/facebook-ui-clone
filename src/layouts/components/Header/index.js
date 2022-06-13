@@ -23,6 +23,7 @@ import Search from '../Search';
 import { css } from '~/utils';
 import Menu from '../Menu';
 import Message from '../Message';
+import Notification from '../Notification';
 
 const cx = classnames.bind(styles);
 
@@ -59,13 +60,7 @@ const Header = () => {
           <div className={cx('option')}>
             <Menu className={cx('btn-option')} />
             <Message className={cx('btn-option')} />
-            <Tippy delay={[500, 100]} content={'Thông báo'}>
-              <Button hoverOverlayHigh className={cx('btn-option')} circle size={[40]}>
-                <QuantityNotification position={[-16, css.calc('50% + 3px')]} quantity={32}>
-                  <IconNotification />
-                </QuantityNotification>
-              </Button>
-            </Tippy>
+            <Notification className={cx('btn-option')} />
             <Tippy delay={[500, 100]} content="Trang cá nhân của bạn">
               <Button hoverOverlayHigh className={cx('btn-option')} circle size={[40]}>
                 <QuantityNotification position={[-10, css.calc('50% + 8px')]} dot>
@@ -92,7 +87,6 @@ const Header = () => {
           ))}
         </div>
       </div>
-      <div className={cx('border-header')}></div>
     </header>
   );
 };

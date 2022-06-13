@@ -1,7 +1,9 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import classnames from 'classnames/bind';
 import HeadlessTippy from '@tippyjs/react/headless';
+import { Link } from 'react-router-dom';
 import Tippy from '@tippyjs/react';
+import PropTypes from 'prop-types';
 
 import styles from './Message.module.scss';
 
@@ -17,7 +19,7 @@ import {
 } from '~/components/Icons';
 import Popper from '~/components/Popper';
 import configs from '~/configs';
-import AccountMessage from '~/components/AccountMessage';
+import AccountItem from '~/components/AccountItem';
 
 const cx = classnames.bind(styles);
 
@@ -36,33 +38,6 @@ const listUserMessage = [
       'https://video.fsgn3-1.fna.fbcdn.net/v/t39.30808-1/277463457_401443105149167_3117504075406379956_n.jpg?stp=cp0_dst-jpg_s80x80&_nc_cat=107&ccb=1-7&_nc_sid=7206a8&_nc_ohc=71tPowidIMMAX9A-lgJ&_nc_ht=video.fsgn3-1.fna&oh=00_AT-d9uszlw6fPI_FnAC4PxwtGPltx0W-DmBKcgs0rBh9lQ&oe=62A804C6',
     action: 'hidden',
     message: 'haha',
-  },
-  {
-    lastName: 'Thanh',
-    firstName: 'Ngân',
-    nickname: 'congchuacuatui',
-    friendImage:
-      'https://video.fsgn8-2.fna.fbcdn.net/v/t39.30808-1/286554563_1210320426380325_7976798939679321202_n.jpg?stp=dst-jpg_p100x100&_nc_cat=105&ccb=1-7&_nc_sid=7206a8&_nc_ohc=fnisNcaIEJ8AX8-lD1Y&_nc_ad=z-m&_nc_cid=0&_nc_ht=video.fsgn8-2.fna&oh=00_AT-v0DOVIIOtQHJMdpk9jUV2g6CCm5lXwJQgQLbq2hadxw&oe=62A8DD7D',
-    action: 'sended',
-    message: 'Ngủ ngonn <3 <3',
-  },
-  {
-    lastName: 'Hồng',
-    firstName: 'Diễm',
-    nickname: 'Cô bé thỉu năng',
-    friendImage:
-      'https://video.xx.fbcdn.net/v/t39.30808-1/283539103_3243798072529209_2020635197101786357_n.jpg?stp=dst-jpg_p100x100&_nc_cat=108&ccb=1-7&_nc_sid=dbb9e7&_nc_ohc=oJs9-cNJnD0AX_Jn1_D&_nc_ad=z-m&_nc_cid=0&_nc_ht=video.xx&oh=00_AT_WReD6SuiWwv5dx_ZMEgPJPGRVgmhNQCUpOIACmKmwXQ&oe=62A87D89',
-    action: 'unread',
-    message: 'Ngủ ngonn <3 <3',
-  },
-  {
-    lastName: 'Nguyễn Thành',
-    firstName: 'Trung',
-    nickname: '',
-    friendImage:
-      'https://video.fsgn4-1.fna.fbcdn.net/v/t39.30808-1/278874584_517375000006167_3086948667651625067_n.jpg?stp=dst-jpg_p100x100&_nc_cat=101&ccb=1-7&_nc_sid=7206a8&_nc_ohc=h7S70KysEYoAX-m9Dx2&_nc_ad=z-m&_nc_cid=0&_nc_ht=video.fsgn4-1.fna&oh=00_AT-PlDhFtcgNUw7fXyz1W4CNPdjixPVqZygumk6GPO0U1Q&oe=62A91EE1',
-    action: 'unread',
-    message: 'Ngủ ngonn <3 <3',
   },
 ];
 
@@ -107,20 +82,29 @@ const Message = ({ className }) => {
               </div>
             </div>
             <div className={cx('body-message')}>
-              {listUserMessage.map(
-                ({ action, message, friendImage, nickname, firstName, lastName }, index) => (
-                  <AccountMessage
-                    key={index}
-                    action={action}
-                    message={message}
-                    friendImage={friendImage}
-                    nickname={nickname}
-                    firstName={firstName}
-                    lastName={lastName}
-                  />
+              {listUserMessage.length > 0 ? (
+                listUserMessage.map(
+                  ({ action, message, friendImage, nickname, firstName, lastName }, index) => (
+                    <AccountItem
+                      key={index}
+                      action={action}
+                      message={message}
+                      friendImage={friendImage}
+                      nickname={nickname}
+                      firstName={firstName}
+                      lastName={lastName}
+                    />
+                  )
                 )
+              ) : (
+                <span>Bạn không có tin nhắn</span>
               )}
             </div>
+            <footer className={cx('footer-message')}>
+              <Link to={configs.routes.MESSENGER} className={cx('inner')}>
+                Xem tất cả trong Messenger
+              </Link>
+            </footer>
           </Popper>
         )}
       >
@@ -130,16 +114,20 @@ const Message = ({ className }) => {
             circle
             size={[40]}
             onClick={(e) => setShowMessage(!showMessage)}
-            hoverOverlayPrimary={showMessage}
+            active={showMessage}
           >
             <QuantityNotification position={[-16, css.calc('50% + 3px')]} quantity={10}>
-              <IconMessage color={showMessage && css.color.iconActive} />
+              <IconMessage />
             </QuantityNotification>
           </Button>
         </Tippy>
       </HeadlessTippy>
     </div>
   );
+};
+
+Message.propTypes = {
+  className: PropTypes.string,
 };
 
 export default Message;

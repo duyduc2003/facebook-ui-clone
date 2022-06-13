@@ -69,10 +69,10 @@ const Menu = ({ className }) => {
             circle
             size={[40]}
             onClick={(e) => setShowMenu(!showMenu)}
-            hoverOverlayPrimary={showMenu}
             hoverOverlayHigh
+            active={showMenu}
           >
-            <IconMenu color={showMenu && css.color.iconActive} />
+            <IconMenu />
           </Button>
         </Tippy>
       </HeadlessTippy>

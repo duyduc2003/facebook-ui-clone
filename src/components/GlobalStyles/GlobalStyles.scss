@@ -3,10 +3,15 @@
 :root {
   --primary: #1b74e4;
   --accent: #1876f2;
+  --icon-active: #1876f2;
+  --text-active: #1876f2;
+  --primary-deemphasized-button-text: #1877f2;
+  --primary-deemphasized-button-background: #e7f3ff;
   --secondary-btn-background: #e4e6eb;
   --color-notification: #e41e3f;
   --white: #fff;
   --black: #000;
+  --blue-link: #216fdb;
   --primary-text: #050505;
   --primary-background: #f0f2f5;
   --hover-overlay: #0000000d;
@@ -17,6 +22,7 @@
   --filter-secondary-icon: invert(39%) sepia(21%) saturate(200%) saturate(109.5%) hue-rotate(174deg)
     brightness(94%) contrast(86%);
   --disabled-icon: #bcc0c4;
+  --web-wash: #f0f2f5;
 
   --header-height: 56px;
 
@@ -30,6 +36,7 @@
 
 html {
   font-size: 62.5%;
+  overflow-y: overlay;
 }
 
 body {
@@ -48,7 +55,7 @@ input,
 }
 
 a[href] {
-  color: var(--text-color);
+  color: var(--primary-text);
   text-decoration: none;
 }
 
@@ -63,4 +70,35 @@ a[href] {
 
 .tippy-arrow {
   display: none;
+}
+
+// Scroll bar
+html *::-webkit-scrollbar {
+  border-radius: 0;
+  width: 8px;
+}
+
+html *::-webkit-scrollbar {
+  border-radius: 0;
+  width: 8px;
+}
+
+html *::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  background-color: rgba(0, 0, 0, 0.15);
+}
+
+html *::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  background-color: rgba(0, 0, 0, 0.15);
+}
+
+html *::-webkit-scrollbar-track {
+  border-radius: 0;
+  background-color: rgba(0, 0, 0, 0);
+}
+
+html *::-webkit-scrollbar-track {
+  border-radius: 0;
+  background-color: rgba(0, 0, 0, 0);
 }

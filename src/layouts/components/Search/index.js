@@ -14,6 +14,7 @@ const Search = () => {
   const [valueInputSearch, setValueInputSearch] = useState('');
   const [showPopperSearch, setShowPopperSearch] = useState(false);
   const [accountSearchResult, setAccountSearchResult] = useState([]);
+
   useEffect(() => {
     const idTimeOut = setTimeout(() => setAccountSearchResult([1]), 2000);
     return () => clearTimeout(idTimeOut);

@@ -1,6 +1,10 @@
 .message-popper {
   min-width: 360px;
   width: 360px;
+
+  overflow-y: auto;
+  position: relative;
+  // min-height: 370px;
 }
 
 .header-message {
@@ -43,7 +47,7 @@
   align-items: center;
   justify-content: center;
 
-  height: 52px;
+  min-height: 52px;
   padding: 0 16px;
   .search-message-inner {
     flex: 1;
@@ -71,4 +75,43 @@
 
 .body-message {
   padding: 0 8px 8px;
+  margin-bottom: 38px;
+
+  > span {
+    font-weight: 600;
+    display: block;
+    width: 100%;
+    text-align: center;
+    opacity: 0.5;
+    font-size: 1.4rem;
+    margin: 10px 0;
+  }
+}
+
+.footer-message {
+  border-top: 1px solid #e5e5e5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 0;
+
+  background-color: #fff;
+
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+
+  .inner {
+    color: var(--blue-link);
+    line-height: 1.3333;
+    font-size: 1.4rem;
+    font-weight: 600;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
 }

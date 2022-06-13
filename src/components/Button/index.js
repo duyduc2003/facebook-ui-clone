@@ -13,6 +13,7 @@ const Button = React.forwardRef(
       hoverOverlay = false,
       hoverOverlayPrimary = false,
       hoverOverlayHigh = false,
+      active = false,
       circle = false,
       size = [],
       to,
@@ -62,6 +63,7 @@ const Button = React.forwardRef(
       hoverOverlayHigh,
       hoverOverlayPrimary,
       circle,
+      active,
     });
 
     return (

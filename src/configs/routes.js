@@ -7,6 +7,7 @@ const routes = {
   LOGIN: '/login',
   MESSENGER: '/messenger',
   PAGE_: '/page',
+  NOTIFICATION: '/notifications',
 };
 
 export default routes;
