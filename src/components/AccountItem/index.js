@@ -46,6 +46,8 @@ const AccountItem = ({
   nickname,
   friendImage = images.placeholderUser,
   message = '',
+  optionItem = true,
+  styleTitle,
 }) => {
   const [userAction, setUserAction] = useState(action);
   const [fullName, setFullName] = useState(nickname ? nickname : `${lastName} ${firstName}`.trim());
@@ -67,7 +69,11 @@ const AccountItem = ({
           borderRadius={'50%'}
         />
         <div className={cx('wrapper-user', { [userAction]: userAction })}>
-          {mode === 'message' && <h5 className={cx('username')}>{fullName}</h5>}
+          {mode === 'message' && (
+            <h5 className={cx('username')} style={styleTitle}>
+              {fullName}
+            </h5>
+          )}
           {mode === 'message' && message && (
             <p className={cx('content')}>
               {(action === 'seen' || action === 'sended') && 'Bạn:'} {message.trim()}
@@ -85,56 +91,61 @@ const AccountItem = ({
           {userAction === 'seen' && <IconUserSeen src={friendImage} />}
         </div>
       </div>
-      <HeadlessTippy
-        visible={showOption}
-        placement="bottom"
-        interactive
-        onClickOutside={(e) => setShowOption(false)}
-        render={(attr) => (
-          <Popper {...attr} className={cx('option')}>
-            {mode === 'message' &&
-              optionMessage.map(({ icon: Icon, title }, index) => (
-                <Button
-                  key={index}
-                  hoverOverlay
-                  className={cx('option-item')}
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    setShowOption(false);
-                  }}
-                >
-                  <Icon />
-                  <p>{title}</p>
-                </Button>
-              ))}
-            {mode === 'notification' &&
-              optionNotification.map(({ icon: Icon, title }, index) => (
-                <Button
-                  key={index}
-                  hoverOverlay
-                  className={cx('option-item')}
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    setShowOption(false);
-                  }}
-                >
-                  <Icon />
-                  <p>{title}</p>
-                </Button>
-              ))}
-          </Popper>
-        )}
-      >
-        <div
-          className={cx('option-account')}
-          onClick={(e) => {
-            e.stopPropagation();
-            setShowOption(!showOption);
-          }}
+      {optionItem && (
+        <HeadlessTippy
+          visible={showOption}
+          placement="bottom"
+          interactive
+          onClickOutside={(e) => setShowOption(false)}
+          popperOptions={{ strategy: 'fixed' }}
+          render={(attr) => (
+            <Popper {...attr} className={cx('option')}>
+              {mode === 'message' &&
+                optionMessage.map(({ icon: Icon, title }, index) => (
+                  <Button
+                    key={index}
+                    hoverOverlay
+                    className={cx('option-item')}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      console.log({ icon: Icon, title });
+                      setShowOption(false);
+                    }}
+                  >
+                    <Icon />
+                    <p>{title}</p>
+                  </Button>
+                ))}
+              {mode === 'notification' &&
+                optionNotification.map(({ icon: Icon, title }, index) => (
+                  <Button
+                    key={index}
+                    hoverOverlay
+                    className={cx('option-item')}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      console.log({ icon: Icon, title });
+                      setShowOption(false);
+                    }}
+                  >
+                    <Icon />
+                    <p>{title}</p>
+                  </Button>
+                ))}
+            </Popper>
+          )}
         >
-          <Icon3Dot className={cx('icon')} />
-        </div>
-      </HeadlessTippy>
+          <div
+            className={cx('option-account')}
+            onClick={(e) => {
+              e.stopPropagation();
+              setShowOption(!showOption);
+            }}
+          >
+            <Icon3Dot className={cx('icon')} />
+          </div>
+        </HeadlessTippy>
+      )}
     </Button>
   );
 };

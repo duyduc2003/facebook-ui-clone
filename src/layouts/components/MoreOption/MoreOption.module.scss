@@ -1,0 +1,39 @@
+.popper-more-option {
+  min-width: 360px;
+  width: 360px;
+  padding: 8px;
+}
+
+.separation {
+  background-color: var(--separation);
+  border-width: 0;
+  height: 1px;
+  margin: 8px;
+}
+
+.btn-option {
+  width: 100%;
+  justify-content: flex-start;
+  .icon {
+    width: 36px;
+    height: 36px;
+    background-color: var(--secondary-btn-background);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    margin-right: 12px;
+  }
+
+  p {
+    color: var(--primary-text);
+    font-weight: 500;
+    font-size: 1.4rem;
+  }
+
+  .icon-right {
+    position: absolute;
+    right: 16px;
+    color: var(--secondary-icon);
+  }
+}

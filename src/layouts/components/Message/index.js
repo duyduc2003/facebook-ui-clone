@@ -12,6 +12,7 @@ import QuantityNotification from '~/components/QuantityNotification';
 import { css } from '~/utils';
 import {
   Icon3Dot,
+  IconArrowLeft,
   IconMessage,
   IconOpenMessage,
   IconSearch,
@@ -20,6 +21,7 @@ import {
 import Popper from '~/components/Popper';
 import configs from '~/configs';
 import AccountItem from '~/components/AccountItem';
+import AccountSearch from '~/components/AccountSearch';
 
 const cx = classnames.bind(styles);
 
@@ -33,19 +35,21 @@ const listUserMessage = [
   {
     lastName: 'Duy',
     firstName: 'Đức',
-    nickname: 'Đực',
+    nickname: 'dangduyducdeptrainhatvutru',
     friendImage:
       'https://video.fsgn3-1.fna.fbcdn.net/v/t39.30808-1/277463457_401443105149167_3117504075406379956_n.jpg?stp=cp0_dst-jpg_s80x80&_nc_cat=107&ccb=1-7&_nc_sid=7206a8&_nc_ohc=71tPowidIMMAX9A-lgJ&_nc_ht=video.fsgn3-1.fna&oh=00_AT-d9uszlw6fPI_FnAC4PxwtGPltx0W-DmBKcgs0rBh9lQ&oe=62A804C6',
-    action: 'hidden',
+    action: 'seen',
     message: 'haha',
   },
 ];
 
 const Message = ({ className }) => {
+  const [valueInputSearch, setValueInputSearch] = useState('');
   const [showMessage, setShowMessage] = useState(false);
+  const [showSearch, setShowSearch] = useState(false);
 
   return (
-    <div className={className}>
+    <div className={className} onClick={(e) => setShowSearch(false)}>
       <HeadlessTippy
         visible={showMessage}
         interactive
@@ -73,32 +77,70 @@ const Message = ({ className }) => {
                 })}
               </div>
             </header>
-            <div className={cx('search-message-wrapper')}>
-              <div className={cx('search-message-inner')}>
-                <label htmlFor="search-message">
-                  <IconSearch />
-                </label>
-                <input id="search-message" type="text" placeholder="Tìm kiếm trên Messenger" />
-              </div>
+            <div onClick={(e) => e.stopPropagation()}>
+              <HeadlessTippy
+                visible={showSearch}
+                placement="bottom"
+                interactive
+                popperOptions={{ strategy: 'fixed' }}
+                render={(attr) => (
+                  <Popper {...attr} className={cx('popper-search-message')}>
+                    <AccountSearch />
+                    <AccountSearch />
+                    <AccountSearch />
+                    <AccountSearch />
+                    <AccountSearch />
+                  </Popper>
+                )}
+              >
+                <div className={cx('search-message-wrapper')}>
+                  {showSearch && (
+                    <Button
+                      size={[36]}
+                      hoverOverlay
+                      className={cx('btn-back')}
+                      onClick={() => setShowSearch(false)}
+                    >
+                      <IconArrowLeft />
+                    </Button>
+                  )}
+                  <div className={cx('search-message-inner')}>
+                    {!showSearch && (
+                      <label htmlFor="search-message">
+                        <IconSearch />
+                      </label>
+                    )}
+                    <input
+                      id="search-message"
+                      type="text"
+                      placeholder="Tìm kiếm trên Messenger"
+                      value={valueInputSearch}
+                      onChange={(e) => setValueInputSearch(e.target.value)}
+                      onFocus={(e) => setShowSearch(true)}
+                    />
+                  </div>
+                </div>
+              </HeadlessTippy>
             </div>
             <div className={cx('body-message')}>
-              {listUserMessage.length > 0 ? (
-                listUserMessage.map(
-                  ({ action, message, friendImage, nickname, firstName, lastName }, index) => (
-                    <AccountItem
-                      key={index}
-                      action={action}
-                      message={message}
-                      friendImage={friendImage}
-                      nickname={nickname}
-                      firstName={firstName}
-                      lastName={lastName}
-                    />
+              {!showSearch &&
+                (listUserMessage.length > 0 ? (
+                  listUserMessage.map(
+                    ({ action, message, friendImage, nickname, firstName, lastName }, index) => (
+                      <AccountItem
+                        key={index}
+                        action={action}
+                        message={message}
+                        friendImage={friendImage}
+                        nickname={nickname}
+                        firstName={firstName}
+                        lastName={lastName}
+                      />
+                    )
                   )
-                )
-              ) : (
-                <span>Bạn không có tin nhắn</span>
-              )}
+                ) : (
+                  <span>Bạn không có tin nhắn</span>
+                ))}
             </div>
             <footer className={cx('footer-message')}>
               <Link to={configs.routes.MESSENGER} className={cx('inner')}>

@@ -43,7 +43,7 @@ const QuantityNotification = ({
 export default QuantityNotification;
 
 QuantityNotification.propTypes = {
-  children: PropTypes.any.isRequired,
+  children: PropTypes.node.isRequired,
   quantity: PropTypes.number,
   dot: PropTypes.bool,
   style: PropTypes.object,

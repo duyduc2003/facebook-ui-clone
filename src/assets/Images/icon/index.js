@@ -8,6 +8,10 @@ const icons = {
   ICON_7: require('./listIcon7.png'),
   ICON_8: require('./listIcon8.png'),
   ICON_9: require('./listIcon9.png'),
+  ICON_10: require('./listIcon10.png'),
+  ICON_11: require('./listIcon11.png'),
+  ICON_12: require('./listIcon12.png'),
+  ICON_13: require('./listIcon13.png'),
 };
 
 export default icons;

@@ -49,6 +49,17 @@
 
   min-height: 52px;
   padding: 0 16px;
+
+  transition: all linear 0.1s;
+
+  .btn-back {
+    color: var(--secondary-icon);
+    padding: 0;
+    border-radius: 50%;
+    margin-left: -8px;
+    margin-right: 8px;
+    transition: all linear 0.1s;
+  }
   .search-message-inner {
     flex: 1;
 
@@ -57,9 +68,11 @@
     height: 36px;
     background-color: #f0f2f5;
     border-radius: 50px;
+    transition: width linear 0.1s !important;
 
     label {
-      padding: 0 10px;
+      padding-left: 10px;
+      color: var(--secondary-icon);
     }
 
     input {
@@ -67,8 +80,10 @@
       flex: 1;
       height: 100%;
       background-color: transparent;
-      font-weight: 500;
+      font-weight: 400;
       padding-bottom: 2px;
+      font-size: 1.5rem;
+      padding-left: 10px;
     }
   }
 }
@@ -114,4 +129,10 @@
       text-decoration: underline;
     }
   }
+}
+
+.popper-search-message {
+  width: 360px;
+  height: calc(100vh - var(--header-height) - 150px);
+  padding: 8px;
 }

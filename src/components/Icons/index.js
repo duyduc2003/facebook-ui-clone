@@ -394,3 +394,115 @@ export const IconRectangleClose = ({ className, height = 20, width = 20, style =
     }}
   ></i>
 );
+
+export const IconArrowLeft = ({ className, width = 20, height = 20 }) => (
+  <svg fill="currentColor" viewBox="0 0 20 20" width={width} height={height} className={className}>
+    <g fillRule="evenodd" transform="translate(-446 -350)">
+      <g fillRule="nonzero">
+        <path
+          d="M100.249 201.999a1 1 0 0 0-1.415-1.415l-5.208 5.209a1 1 0 0 0 0 1.414l5.208 5.209A1 1 0 0 0 100.25 211l-4.501-4.501 4.5-4.501z"
+          transform="translate(355 153.5)"
+        ></path>
+        <path
+          d="M107.666 205.5H94.855a1 1 0 1 0 0 2h12.813a1 1 0 1 0 0-2z"
+          transform="translate(355 153.5)"
+        ></path>
+      </g>
+    </g>
+  </svg>
+);
+
+export const IconSettings = ({ className, height = 20, width = 20, style = {} }) => (
+  <i
+    className={className}
+    style={{
+      backgroundImage: css.url(images.icons.ICON_10),
+      backgroundPosition: '-22px -270px',
+      backgroundSize: '74px 342px',
+      width,
+      height,
+      backgroundRepeat: 'no-repeat',
+      display: 'inline-block',
+      ...style,
+    }}
+  ></i>
+);
+
+export const IconAngleRight = ({ className, height = 24, width = 24, style = {} }) => (
+  <i
+    className={className}
+    style={{
+      backgroundImage: css.url(images.icons.ICON_5),
+      backgroundPosition: '-112px -20px',
+      backgroundSize: '190px 172px',
+      width,
+      height,
+      backgroundRepeat: 'no-repeat',
+      display: 'inline-block',
+      ...style,
+    }}
+  ></i>
+);
+
+export const IconQuestion = ({ className, height = 20, width = 20, style = {} }) => (
+  <i
+    className={className}
+    style={{
+      backgroundImage: css.url(images.icons.ICON_11),
+      backgroundPosition: '0 -286px',
+      backgroundSize: '22px 348px',
+      width,
+      height,
+      backgroundRepeat: 'no-repeat',
+      display: 'inline-block',
+      ...style,
+    }}
+  ></i>
+);
+
+export const IconMoon = ({ className, height = 20, width = 20, style = {} }) => (
+  <i
+    className={className}
+    style={{
+      backgroundImage: css.url(images.icons.ICON_12),
+      backgroundPosition: '0 -758px',
+      backgroundSize: '34px 1180px',
+      width,
+      height,
+      backgroundRepeat: 'no-repeat',
+      display: 'inline-block',
+      ...style,
+    }}
+  ></i>
+);
+
+export const IconCommentsIdea = ({ className, height = 20, width = 20, style = {} }) => (
+  <i
+    className={className}
+    style={{
+      backgroundImage: css.url(images.icons.ICON_13),
+      backgroundPosition: '0 -26px',
+      backgroundSize: '26px 158px',
+      width,
+      height,
+      backgroundRepeat: 'no-repeat',
+      display: 'inline-block',
+      ...style,
+    }}
+  ></i>
+);
+export const IconSignOut = ({ className, height = 20, width = 20, style = {} }) => (
+  <i
+    className={className}
+    style={{
+      backgroundImage: css.url(images.icons.ICON_13),
+      backgroundPosition: '0 -48px',
+      backgroundSize: '26px 158px',
+      width,
+      height,
+      backgroundRepeat: 'no-repeat',
+      display: 'inline-block',
+      ...style,
+    }}
+  ></i>
+);

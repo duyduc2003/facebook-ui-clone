@@ -24,6 +24,7 @@ import { css } from '~/utils';
 import Menu from '../Menu';
 import Message from '../Message';
 import Notification from '../Notification';
+import MoreOption from '../MoreOption';
 
 const cx = classnames.bind(styles);
 
@@ -61,13 +62,7 @@ const Header = () => {
             <Menu className={cx('btn-option')} />
             <Message className={cx('btn-option')} />
             <Notification className={cx('btn-option')} />
-            <Tippy delay={[500, 100]} content="Trang cá nhân của bạn">
-              <Button hoverOverlayHigh className={cx('btn-option')} circle size={[40]}>
-                <QuantityNotification position={[-10, css.calc('50% + 8px')]} dot>
-                  <IconMoreOption />
-                </QuantityNotification>
-              </Button>
-            </Tippy>
+            <MoreOption className={cx('btn-option')} />
           </div>
         </div>
       </div>
@@ -87,6 +82,7 @@ const Header = () => {
           ))}
         </div>
       </div>
+      <div className={cx('border-header')}></div>
     </header>
   );
 };
