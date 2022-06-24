@@ -37,6 +37,9 @@
 
       .icon {
         -webkit-filter: var(--filter-secondary-icon);
+        display: flex;
+        align-items: center;
+        justify-content: center;
       }
     }
   }
@@ -135,4 +138,8 @@
   width: 360px;
   height: calc(100vh - var(--header-height) - 150px);
   padding: 8px;
+
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
 }

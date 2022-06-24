@@ -2,6 +2,10 @@
   min-width: 360px;
   width: 360px;
   padding: 8px;
+
+  display: flex;
+  flex-direction: column;
+  overflow-y: overlay;
 }
 
 .separation {
