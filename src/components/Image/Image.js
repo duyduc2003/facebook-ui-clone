@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { memo, useState } from 'react';
 import classnames from 'classnames/bind';
 import PropTypes from 'prop-types';
 
@@ -46,4 +46,4 @@ Image.propTypes = {
   objectFit: PropTypes.PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
 };
 
-export default Image;
+export default memo(Image);

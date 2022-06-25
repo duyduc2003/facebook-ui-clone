@@ -1,6 +1,6 @@
 import classnames from 'classnames/bind';
 import HeadlessTippy from '@tippyjs/react/headless';
-import React, { useEffect, useState } from 'react';
+import React, { memo, useCallback, useEffect, useState } from 'react';
 
 import Popper from '~/components/Popper';
 import AccountSearch from '~/components/AccountSearch';
@@ -15,33 +15,39 @@ const Search = () => {
   const [showPopperSearch, setShowPopperSearch] = useState(false);
   const [accountSearchResult, setAccountSearchResult] = useState([]);
 
+  const handleCloseSearchPopper = useCallback(() => setShowPopperSearch(false), []);
+  const handleShowSearchPopper = useCallback(() => setShowPopperSearch(true), []);
+  const handleValueInputChange = (e) => setValueInputSearch(e.target.value);
   useEffect(() => {
     const idTimeOut = setTimeout(() => setAccountSearchResult([1]), 2000);
     return () => clearTimeout(idTimeOut);
   }, [valueInputSearch]);
+
+  const renderResultSearch = (attr) => {
+    return (
+      <Popper {...attr} className={cx('popper-search')}>
+        <header className={cx('header-search')}>
+          <h5 className={cx('title')}>Kết quả tìm kiếm</h5>
+          <Button className={cx('btn-edit')}>Chỉnh sửa</Button>
+        </header>
+        <div className={cx('body-search')}>
+          <AccountSearch onClick={handleCloseSearchPopper} />
+          <AccountSearch onClick={handleCloseSearchPopper} />
+          <AccountSearch onClick={handleCloseSearchPopper} />
+          <AccountSearch onClick={handleCloseSearchPopper} />
+          <AccountSearch onClick={handleCloseSearchPopper} />
+        </div>
+      </Popper>
+    );
+  };
+
   return (
     <HeadlessTippy
       visible={showPopperSearch && accountSearchResult.length > 0}
       interactive
-      onClickOutside={(e) => setShowPopperSearch(false)}
+      onClickOutside={handleCloseSearchPopper}
       placement="bottom"
-      render={(attr) => {
-        return (
-          <Popper {...attr} className={cx('popper-search')}>
-            <header className={cx('header-search')}>
-              <h5 className={cx('title')}>Kết quả tìm kiếm</h5>
-              <Button className={cx('btn-edit')}>Chỉnh sửa</Button>
-            </header>
-            <div className={cx('body-search')}>
-              <AccountSearch onClick={(e) => setShowPopperSearch(false)} />
-              <AccountSearch onClick={(e) => setShowPopperSearch(false)} />
-              <AccountSearch onClick={(e) => setShowPopperSearch(false)} />
-              <AccountSearch onClick={(e) => setShowPopperSearch(false)} />
-              <AccountSearch onClick={(e) => setShowPopperSearch(false)} />
-            </div>
-          </Popper>
-        );
-      }}
+      render={renderResultSearch}
     >
       <div className={cx('form-input')}>
         <label htmlFor="input-search" className={cx('label-icon-search')}>
@@ -51,14 +57,14 @@ const Search = () => {
           id="input-search"
           placeholder="Tìm kiếm trên facebook"
           value={valueInputSearch}
-          onChange={(e) => setValueInputSearch(e.target.value)}
+          onChange={handleValueInputChange}
           spellCheck={false}
           autoComplete="off"
-          onFocus={(e) => setShowPopperSearch(true)}
+          onFocus={handleShowSearchPopper}
         />
       </div>
     </HeadlessTippy>
   );
 };
 
-export default Search;
+export default memo(Search);

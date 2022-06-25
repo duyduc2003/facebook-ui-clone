@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { memo, useState } from 'react';
 import className from 'classnames/bind';
 import PropTypes from 'prop-types';
 import HeadlessTippy from '@tippyjs/react/headless';
@@ -173,4 +173,4 @@ AccountItem.propTypes = {
   to: PropTypes.string,
 };
 
-export default AccountItem;
+export default memo(AccountItem);

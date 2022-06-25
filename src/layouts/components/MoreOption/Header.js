@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import classnames from 'classnames/bind';
+import { memo } from 'react';
 
 import styles from './MoreOption.module.scss';
 import Button from '~/components/Button';
@@ -23,4 +24,4 @@ Header.propTypes = {
   onBack: PropTypes.func,
 };
 
-export default Header;
+export default memo(Header);

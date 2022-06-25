@@ -1,9 +1,9 @@
 import classnames from 'classnames/bind';
+import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import PropTypes, { func, number, oneOfType, string } from 'prop-types';
 
 import styles from './Button.module.scss';
-import React from 'react';
 
 const cx = classnames.bind(styles);
 
@@ -97,4 +97,4 @@ Button.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
-export default Button;
+export default React.memo(Button);

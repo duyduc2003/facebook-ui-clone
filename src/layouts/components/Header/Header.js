@@ -1,22 +1,30 @@
 import { Link } from 'react-router-dom';
 import classnames from 'classnames/bind';
-import Tippy from '@tippyjs/react';
-
+import { useCallback } from 'react';
+import { v4 as uuid4 } from 'uuid';
 import 'tippy.js/dist/tippy.css';
 
 import styles from './Header.module.scss';
 
 import configs from '~/configs';
 import {
+  Icon3Dot,
   IconFacebook,
+  IconFlag,
   IconFriend,
   IconFriendActive,
   IconGroup,
   IconGroupActive,
+  IconGroupFull,
   IconHome,
   IconHomeActive,
+  IconNews,
+  IconOpenMessage,
+  IconPost,
+  IconPostsInGroup,
   IconWatch,
   IconWatchActive,
+  IconWriteMessage,
 } from '~/components/Icons';
 import Image from '~/components/Image';
 import Button from '~/components/Button';
@@ -60,10 +68,44 @@ const nav_middle = [
   },
 ];
 
+const menu_items = [
+  { title: 'Đăng', icon: <IconPost />, separation: false },
+  { title: 'Bài viết trong nhóm', icon: <IconPostsInGroup />, separation: false },
+  { title: 'Tin', icon: <IconNews />, separation: false },
+  { title: 'Nhóm', icon: <IconGroupFull />, separation: true, to: configs.routes.GROUP },
+  { title: 'Trang', icon: <IconFlag />, separation: false, to: configs.routes.PAGE_ },
+];
+
+const listBtnOptionMess = [
+  { title: 'Tùy chọn', icon: <Icon3Dot /> },
+  { title: 'Xem tất cả trong messenger', icon: <IconOpenMessage />, to: configs.routes.MESSENGER },
+  { title: 'Tin nhắn mới', icon: <IconWriteMessage /> },
+];
+
+const user = {
+  id: uuid4(),
+  image:
+    'https://video.fsgn1-1.fna.fbcdn.net/v/t39.30808-1/277463457_401443105149167_3117504075406379956_n.jpg?stp=dst-jpg_s100x100&_nc_cat=107&ccb=1-7&_nc_sid=7206a8&_nc_ohc=NRDNCEBYhbMAX8uk5lG&_nc_ht=video.fsgn1-1.fna&oh=00_AT8nWmEhbW--GbUo7bIKAlcBKHpgcbLHz6Nj3KW4oIyxkg&oe=62B9D106',
+  lastName: 'Đặng',
+  firstName: 'Duy Đức',
+};
+
+const listUserMessage = [
+  {
+    lastName: 'Duy',
+    firstName: 'Đức',
+    nickname: 'dangduyducdeptrainhatvutru',
+    srcImageUser:
+      'https://video.fsgn1-1.fna.fbcdn.net/v/t39.30808-1/277463457_401443105149167_3117504075406379956_n.jpg?stp=dst-jpg_s100x100&_nc_cat=107&ccb=1-7&_nc_sid=7206a8&_nc_ohc=NRDNCEBYhbMAX8uk5lG&_nc_ht=video.fsgn1-1.fna&oh=00_AT8nWmEhbW--GbUo7bIKAlcBKHpgcbLHz6Nj3KW4oIyxkg&oe=62B9D106',
+    action: 'unread',
+    message: 'haha',
+  },
+];
+
 const Header = () => {
-  const handleMoreOptionChange = (option) => {
+  const handleMoreOptionChange = useCallback((option) => {
     console.log(option);
-  };
+  }, []);
 
   return (
     <header className={cx('wrapper')}>
@@ -75,21 +117,25 @@ const Header = () => {
           <Search />
         </div>
         <div className={cx('header-right')}>
-          <Button size={[100, 36]} hoverOverlay to={'/user/me'} className={cx('user')}>
+          <Button size={[100, 36]} hoverOverlay to={`/user/${user.id}`} className={cx('user')}>
             <Image
-              src="https://video.fsgn1-1.fna.fbcdn.net/v/t39.30808-1/277463457_401443105149167_3117504075406379956_n.jpg?stp=dst-jpg_s100x100&_nc_cat=107&ccb=1-7&_nc_sid=7206a8&_nc_ohc=NRDNCEBYhbMAX8uk5lG&_nc_ht=video.fsgn1-1.fna&oh=00_AT8nWmEhbW--GbUo7bIKAlcBKHpgcbLHz6Nj3KW4oIyxkg&oe=62B9D106"
-              alt="duy duc"
+              src={user.image}
+              alt={user.id}
               className={cx('avatar-user')}
               height={28}
               width={28}
               borderRadius="50%"
               objectFit="cover"
             />
-            <span className={cx('username')}>Duy Đức</span>
+            <span className={cx('username')}>{user.firstName}</span>
           </Button>
           <div className={cx('option')}>
-            <Menu className={cx('btn-option')} />
-            <Message className={cx('btn-option')} />
+            <Menu className={cx('btn-option')} menu={menu_items} />
+            <Message
+              className={cx('btn-option')}
+              listUserMessage={listUserMessage}
+              listBtnOption={listBtnOptionMess}
+            />
             <Notification className={cx('btn-option')} />
             <MoreOption className={cx('btn-option')} onchange={handleMoreOptionChange} />
           </div>

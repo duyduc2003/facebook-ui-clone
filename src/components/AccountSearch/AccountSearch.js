@@ -1,5 +1,7 @@
 import classnames from 'classnames/bind';
-import { func } from 'prop-types';
+import { memo } from 'react';
+import images from '~/assets/Images';
+import PropTypes from 'prop-types';
 
 import Button from '../Button';
 import Image from '../Image';
@@ -8,28 +10,29 @@ import styles from './AccountSearch.module.scss';
 
 const cx = classnames.bind(styles);
 
-const AccountSearch = ({ onClick }) => {
+const AccountSearch = ({
+  onClick,
+  imageSrc = images.placeholderUser,
+  idUser,
+  lastName = '',
+  firstName = 'Người dùng facebook',
+}) => {
   return (
-    <Button
-      to={'/user/' + Math.floor(Math.random() * 20)}
-      onClick={onClick}
-      hoverOverlay
-      className={cx('wrapper')}
-    >
+    <Button to={'/user/' + idUser} onClick={onClick} hoverOverlay className={cx('wrapper')}>
       <div className={cx('inner')}>
-        <Image
-          className={cx('avatar-user')}
-          src="https://video.fsgn1-1.fna.fbcdn.net/v/t39.30808-1/277463457_401443105149167_3117504075406379956_n.jpg?stp=dst-jpg_s100x100&_nc_cat=107&ccb=1-7&_nc_sid=7206a8&_nc_ohc=NRDNCEBYhbMAX8uk5lG&_nc_ht=video.fsgn1-1.fna&oh=00_AT8nWmEhbW--GbUo7bIKAlcBKHpgcbLHz6Nj3KW4oIyxkg&oe=62B9D106"
-          alt="dangduyduc"
-        />
-        <h5 className={cx('username')}>Đặng Duy Đức</h5>
+        <Image className={cx('avatar-user')} src={imageSrc} alt={idUser} />
+        <h5 className={cx('username')}>{lastName + ' ' + firstName}</h5>
       </div>
     </Button>
   );
 };
 
 AccountSearch.propTypes = {
-  onClick: func,
+  onClick: PropTypes.func,
+  imageSrc: PropTypes.string,
+  idUser: PropTypes.string,
+  lastName: PropTypes.string,
+  firstName: PropTypes.string,
 };
 
-export default AccountSearch;
+export default memo(AccountSearch);

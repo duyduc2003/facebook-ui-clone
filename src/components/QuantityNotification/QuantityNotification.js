@@ -1,11 +1,12 @@
 import classnames from 'classnames/bind';
 import PropTypes from 'prop-types';
+import { memo } from 'react';
 
 import styles from './QuantityNotification.module.scss';
 
 const cx = classnames.bind(styles);
 
-const p = ['top', 'left', 'bottom', 'right'];
+const placements = ['top', 'left', 'bottom', 'right'];
 
 const QuantityNotification = ({
   children,
@@ -18,7 +19,7 @@ const QuantityNotification = ({
 
   position.forEach((pos, index) => {
     if (pos !== null) {
-      _position[p[index]] = pos;
+      _position[placements[index]] = pos;
     }
   });
 
@@ -40,8 +41,6 @@ const QuantityNotification = ({
   );
 };
 
-export default QuantityNotification;
-
 QuantityNotification.propTypes = {
   children: PropTypes.node.isRequired,
   quantity: PropTypes.number,
@@ -49,3 +48,5 @@ QuantityNotification.propTypes = {
   style: PropTypes.object,
   position: PropTypes.array,
 };
+
+export default memo(QuantityNotification);

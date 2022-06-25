@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import classnames from 'classnames/bind';
+import { memo } from 'react';
 
 import styles from './Navigation.module.scss';
 
@@ -13,4 +14,4 @@ Navigation.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
-export default Navigation;
+export default memo(Navigation);
