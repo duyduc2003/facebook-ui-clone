@@ -1,4 +1,4 @@
-import { memo, useState } from 'react';
+import { memo, useCallback, useState } from 'react';
 import className from 'classnames/bind';
 import PropTypes from 'prop-types';
 import HeadlessTippy from '@tippyjs/react/headless';
@@ -66,18 +66,25 @@ const AccountItem = ({
   const [fullName, setFullName] = useState(nickname ? nickname : `${lastName} ${firstName}`.trim());
   const [showOption, setShowOption] = useState(false);
 
-  function handleClickAccount(e) {
-    if (userAction === actions.UNREAD && mode === modes.MESSAGE) setUserAction('hidden');
-  }
-  const handleCloseOptions = (e) => {
+  const handleClickAccount = useCallback(
+    (e) => {
+      if (userAction === actions.UNREAD && mode === modes.MESSAGE) setUserAction('hidden');
+    },
+    [mode, userAction]
+  );
+
+  const handleCloseOptions = useCallback((e) => {
     e.stopPropagation();
     setShowOption(false);
-  };
+  }, []);
 
-  const handleToggleOptions = (e) => {
-    e.stopPropagation();
-    setShowOption(!showOption);
-  };
+  const handleToggleOptions = useCallback(
+    (e) => {
+      e.stopPropagation();
+      setShowOption(!showOption);
+    },
+    [showOption]
+  );
 
   const renderOptions = (attr) => (
     <Popper {...attr} className={cx('option')}>

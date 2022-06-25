@@ -53,7 +53,7 @@ const Button = React.forwardRef(
         height_width.height = size[1];
       }
     } else if (size && size.length > 2) {
-      throw new Error('Error Buton component: size must be have 2 item');
+      throw new Error('Error Button component: size must be have 2 item');
     }
 
     let _style = {
