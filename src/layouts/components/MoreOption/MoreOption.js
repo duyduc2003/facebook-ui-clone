@@ -21,6 +21,7 @@ import styles from './MoreOption.module.scss';
 import Popper from '~/components/Popper';
 import AccountItem from '~/components/AccountItem';
 import configs from '~/configs';
+import Header from './Header';
 
 const cx = className.bind(styles);
 
@@ -31,7 +32,14 @@ const listOption = [
     children: {
       title: 'Cài đặt và quyền riêng tư',
       data: [
-        { icon: <IconSettings />, title: 'Cài đặt' },
+        {
+          icon: <IconSettings />,
+          title: 'Cài đặt',
+          children: {
+            title: 'hello',
+            data: [{ icon: <IconSettings />, title: 'Cài đặt' }],
+          },
+        },
         { icon: <IconSettings />, title: 'Cài đặt' },
         { icon: <IconSettings />, title: 'Cài đặt' },
         { icon: <IconSettings />, title: 'Cài đặt' },
@@ -44,13 +52,12 @@ const listOption = [
   { icon: <IconSignOut />, title: 'Đăng xuất', to: configs.routes.LOGIN },
 ];
 
-const MoreOption = ({ className }) => {
+const MoreOption = ({ className, onchange }) => {
   const [showMoreOption, setShowMoreOption] = useState(false);
   const [history, setHistory] = useState([{ data: listOption }]);
 
   const currentOption = history[history.length - 1];
   console.log(currentOption);
-
   return (
     <div className={className}>
       <HeadlessTippy
@@ -60,17 +67,29 @@ const MoreOption = ({ className }) => {
         onClickOutside={() => {
           setShowMoreOption(false);
         }}
+        onHide={() => setHistory((prev) => prev.slice(0, 1))}
         render={(attr) => (
           <Popper {...attr} className={cx('popper-more-option')}>
-            <AccountItem
-              optionItem={false}
-              lastName="Đặng Duy"
-              firstName="Đức"
-              message="Xem trang cá nhân của bạn"
-              styleTitle={{ fontWeight: 600, fontSize: '1.6rem' }}
-              friendImage="https://video.fsgn1-1.fna.fbcdn.net/v/t39.30808-1/277463457_401443105149167_3117504075406379956_n.jpg?stp=dst-jpg_s100x100&_nc_cat=107&ccb=1-7&_nc_sid=7206a8&_nc_ohc=NRDNCEBYhbMAX8uk5lG&_nc_ht=video.fsgn1-1.fna&oh=00_AT8nWmEhbW--GbUo7bIKAlcBKHpgcbLHz6Nj3KW4oIyxkg&oe=62B9D106"
-            />
-            <div className={cx('separation')}></div>
+            {!(history && history.length >= 2) ? (
+              <>
+                <AccountItem
+                  optionItem={false}
+                  lastName="Đặng Duy"
+                  firstName="Đức"
+                  message="Xem trang cá nhân của bạn"
+                  styleTitle={{ fontWeight: 600, fontSize: '1.6rem' }}
+                  srcImageUser="https://video.fsgn1-1.fna.fbcdn.net/v/t39.30808-1/277463457_401443105149167_3117504075406379956_n.jpg?stp=dst-jpg_s100x100&_nc_cat=107&ccb=1-7&_nc_sid=7206a8&_nc_ohc=NRDNCEBYhbMAX8uk5lG&_nc_ht=video.fsgn1-1.fna&oh=00_AT8nWmEhbW--GbUo7bIKAlcBKHpgcbLHz6Nj3KW4oIyxkg&oe=62B9D106"
+                  to={configs.routes.PROFILE}
+                />
+                <div className={cx('separation')}></div>
+              </>
+            ) : (
+              <Header
+                title={currentOption.title}
+                onBack={() => setHistory((prev) => prev.slice(0, prev.length - 1))}
+              />
+            )}
+
             <div className={cx('list-btn-option')}>
               {currentOption.data.map((option, index) => (
                 <Button
@@ -81,6 +100,8 @@ const MoreOption = ({ className }) => {
                   onClick={() => {
                     if (option.children && option.children.data) {
                       setHistory((prev) => [...prev, option.children]);
+                    } else {
+                      onchange(option);
                     }
                   }}
                 >
@@ -113,5 +134,8 @@ const MoreOption = ({ className }) => {
   );
 };
 
-MoreOption.propTypes = {};
+MoreOption.propTypes = {
+  className: PropTypes.string,
+  onchange: PropTypes.func,
+};
 export default MoreOption;

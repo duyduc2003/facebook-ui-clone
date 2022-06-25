@@ -72,7 +72,7 @@ const Button = React.forwardRef(
     });
 
     let _className;
-    if (classNameIsFunction) {
+    if (navTo && classNameIsFunction) {
       _className = ({ isActive }) => className({ isActive, classes });
     } else {
       _className = classes;

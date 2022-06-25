@@ -62,7 +62,7 @@ const Notification = ({ className }) => {
             </div>
             <div className={cx('body-popper')}>
               <AccountItem
-                friendImage={
+                srcImageUser={
                   'https://video.fsgn1-1.fna.fbcdn.net/v/t39.30808-1/277463457_401443105149167_3117504075406379956_n.jpg?stp=dst-jpg_s100x100&_nc_cat=107&ccb=1-7&_nc_sid=7206a8&_nc_ohc=NRDNCEBYhbMAX8uk5lG&_nc_ht=video.fsgn1-1.fna&oh=00_AT8nWmEhbW--GbUo7bIKAlcBKHpgcbLHz6Nj3KW4oIyxkg&oe=62B9D106'
                 }
                 message="xin chao tat ca moi nguoi xin chao tat ca moi nguoi xin chao tat ca moi nguoi xin chao tat ca moi nguoi"
@@ -70,7 +70,7 @@ const Notification = ({ className }) => {
                 action="hidden"
               />
               <AccountItem
-                friendImage={
+                srcImageUser={
                   'https://video.fsgn1-1.fna.fbcdn.net/v/t39.30808-1/277463457_401443105149167_3117504075406379956_n.jpg?stp=dst-jpg_s100x100&_nc_cat=107&ccb=1-7&_nc_sid=7206a8&_nc_ohc=NRDNCEBYhbMAX8uk5lG&_nc_ht=video.fsgn1-1.fna&oh=00_AT8nWmEhbW--GbUo7bIKAlcBKHpgcbLHz6Nj3KW4oIyxkg&oe=62B9D106'
                 }
                 message="xin chao tat ca moi nguoi xin chao tat ca moi nguoi xin chao tat ca moi nguoi xin chao tat ca moi nguoi"

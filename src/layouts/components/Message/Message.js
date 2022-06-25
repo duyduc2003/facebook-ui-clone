@@ -36,7 +36,7 @@ const listUserMessage = [
     lastName: 'Duy',
     firstName: 'Đức',
     nickname: 'dangduyducdeptrainhatvutru',
-    friendImage:
+    srcImageUser:
       'https://video.fsgn1-1.fna.fbcdn.net/v/t39.30808-1/277463457_401443105149167_3117504075406379956_n.jpg?stp=dst-jpg_s100x100&_nc_cat=107&ccb=1-7&_nc_sid=7206a8&_nc_ohc=NRDNCEBYhbMAX8uk5lG&_nc_ht=video.fsgn1-1.fna&oh=00_AT8nWmEhbW--GbUo7bIKAlcBKHpgcbLHz6Nj3KW4oIyxkg&oe=62B9D106',
     action: 'unread',
     message: 'haha',
@@ -135,12 +135,12 @@ const Message = ({ className }) => {
               {!showSearch &&
                 (listUserMessage.length > 0 ? (
                   listUserMessage.map(
-                    ({ action, message, friendImage, nickname, firstName, lastName }, index) => (
+                    ({ action, message, srcImageUser, nickname, firstName, lastName }, index) => (
                       <AccountItem
                         key={index}
                         action={action}
                         message={message}
-                        friendImage={friendImage}
+                        srcImageUser={srcImageUser}
                         nickname={nickname}
                         firstName={firstName}
                         lastName={lastName}

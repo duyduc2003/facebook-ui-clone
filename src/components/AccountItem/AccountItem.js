@@ -56,10 +56,11 @@ const AccountItem = ({
   lastName = '',
   firstName = 'Người dùng facebook',
   nickname,
-  friendImage = images.placeholderUser,
+  srcImageUser = images.placeholderUser,
   message = '',
   optionItem = true,
   styleTitle,
+  to,
 }) => {
   const [userAction, setUserAction] = useState(action);
   const [fullName, setFullName] = useState(nickname ? nickname : `${lastName} ${firstName}`.trim());
@@ -68,13 +69,51 @@ const AccountItem = ({
   function handleClickAccount(e) {
     if (userAction === actions.UNREAD && mode === modes.MESSAGE) setUserAction('hidden');
   }
+  const handleCloseOptions = (e) => {
+    e.stopPropagation();
+    setShowOption(false);
+  };
+
+  const handleToggleOptions = (e) => {
+    e.stopPropagation();
+    setShowOption(!showOption);
+  };
+
+  const renderOptions = (attr) => (
+    <Popper {...attr} className={cx('option')}>
+      {mode === modes.MESSAGE &&
+        optionMessage.map(({ icon, title }, index) => (
+          <Button
+            key={index}
+            hoverOverlay
+            className={cx('option-item')}
+            onClick={handleCloseOptions}
+          >
+            {icon}
+            <p>{title}</p>
+          </Button>
+        ))}
+      {mode === modes.NOTIFICATION &&
+        optionNotification.map(({ icon, title }, index) => (
+          <Button
+            key={index}
+            hoverOverlay
+            className={cx('option-item')}
+            onClick={handleCloseOptions}
+          >
+            {icon}
+            <p>{title}</p>
+          </Button>
+        ))}
+    </Popper>
+  );
 
   return (
-    <Button hoverOverlay className={cx('wrapper')} onClick={handleClickAccount}>
+    <Button to={to} hoverOverlay className={cx('wrapper')} onClick={handleClickAccount}>
       <div className={cx('inner')}>
         <Image
           className={cx('avt-user')}
-          src={friendImage}
+          src={srcImageUser}
           height={56}
           width={56}
           objectFit="cover"
@@ -103,7 +142,7 @@ const AccountItem = ({
             <IconSended className={cx('sended')} />
           )}
           {mode !== modes.NOTIFICATION && userAction === actions.SEEN && (
-            <IconUserSeen src={friendImage} />
+            <IconUserSeen src={srcImageUser} />
           )}
         </div>
       </div>
@@ -114,48 +153,9 @@ const AccountItem = ({
           interactive
           onClickOutside={(e) => setShowOption(false)}
           popperOptions={{ strategy: 'fixed' }}
-          render={(attr) => (
-            <Popper {...attr} className={cx('option')}>
-              {mode === modes.MESSAGE &&
-                optionMessage.map(({ icon, title }, index) => (
-                  <Button
-                    key={index}
-                    hoverOverlay
-                    className={cx('option-item')}
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      setShowOption(false);
-                    }}
-                  >
-                    {icon}
-                    <p>{title}</p>
-                  </Button>
-                ))}
-              {mode === modes.NOTIFICATION &&
-                optionNotification.map(({ icon, title }, index) => (
-                  <Button
-                    key={index}
-                    hoverOverlay
-                    className={cx('option-item')}
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      setShowOption(false);
-                    }}
-                  >
-                    {icon}
-                    <p>{title}</p>
-                  </Button>
-                ))}
-            </Popper>
-          )}
+          render={renderOptions}
         >
-          <div
-            className={cx('option-account')}
-            onClick={(e) => {
-              e.stopPropagation();
-              setShowOption(!showOption);
-            }}
-          >
+          <div className={cx('option-account')} onClick={handleToggleOptions}>
             <Icon3Dot className={cx('icon')} />
           </div>
         </HeadlessTippy>
@@ -168,8 +168,9 @@ AccountItem.propTypes = {
   action: PropTypes.oneOf([actions.SEEN, actions.SENDED, actions.UNREAD, actions.HIDDEN]),
   mode: PropTypes.oneOf([modes.MESSAGE, modes.NOTIFICATION]),
   friendName: PropTypes.string,
-  friendImage: PropTypes.string,
+  srcImageUser: PropTypes.string,
   message: PropTypes.string,
+  to: PropTypes.string,
 };
 
 export default AccountItem;

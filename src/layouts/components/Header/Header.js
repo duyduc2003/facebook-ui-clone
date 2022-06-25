@@ -61,6 +61,10 @@ const nav_middle = [
 ];
 
 const Header = () => {
+  const handleMoreOptionChange = (option) => {
+    console.log(option);
+  };
+
   return (
     <header className={cx('wrapper')}>
       <div className={cx('inner')}>
@@ -87,7 +91,7 @@ const Header = () => {
             <Menu className={cx('btn-option')} />
             <Message className={cx('btn-option')} />
             <Notification className={cx('btn-option')} />
-            <MoreOption className={cx('btn-option')} />
+            <MoreOption className={cx('btn-option')} onchange={handleMoreOptionChange} />
           </div>
         </div>
       </div>
