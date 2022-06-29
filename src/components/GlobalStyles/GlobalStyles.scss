@@ -27,6 +27,7 @@
   --web-wash: #f0f2f5;
 
   --header-height: 56px;
+  --width-sidebar: 360px;
 
   --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
@@ -46,6 +47,7 @@ body {
   font-size: 1.6rem;
   line-height: 1.5;
   text-rendering: optimizeSpeed;
+  background-color: var(--primary-background);
 }
 
 button,

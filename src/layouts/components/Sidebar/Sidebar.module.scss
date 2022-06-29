@@ -1,0 +1,30 @@
+.wrapper {
+  max-width: var(--width-sidebar);
+  width: var(--width-sidebar);
+  background-color: var(--white);
+  position: fixed;
+  top: var(--header-height);
+  bottom: 0;
+  z-index: 500;
+  &.transparent {
+    background-color: transparent;
+  }
+  &.left {
+    left: 0;
+  }
+  &.right {
+    right: 0;
+  }
+}
+
+.border-left {
+  background-image: url('../../../assets/Images/borderSidebar.png');
+  position: absolute;
+  background-repeat: repeat-y;
+  right: -6px;
+  top: 0;
+  bottom: 0;
+  background-size: 7px 1px;
+  width: 7px;
+  pointer-events: none;
+}

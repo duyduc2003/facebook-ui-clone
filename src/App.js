@@ -20,6 +20,12 @@ function App() {
               Layout = route.layout;
             }
 
+            const propsLayout = {};
+
+            if (route.sidebarTransparent) {
+              propsLayout.sidebarTransparent = route.sidebarTransparent;
+            }
+
             const key = idv4();
 
             return (
@@ -27,7 +33,7 @@ function App() {
                 key={key}
                 path={route.path}
                 element={
-                  <Layout>
+                  <Layout {...propsLayout}>
                     <Page />
                   </Layout>
                 }

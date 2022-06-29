@@ -7,7 +7,7 @@ import styles from './Navigation.module.scss';
 const cx = classnames.bind(styles);
 
 const Navigation = ({ children }) => {
-  return <div className={cx('wrapper')}>{children}</div>;
+  return <nav className={cx('wrapper')}>{children}</nav>;
 };
 
 Navigation.propTypes = {
