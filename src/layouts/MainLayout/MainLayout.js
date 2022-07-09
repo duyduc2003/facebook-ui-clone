@@ -1,5 +1,6 @@
 import classnames from 'classnames/bind';
 import PropTypes from 'prop-types';
+
 import Header from '../components/Header';
 import Sidebar from '../components/Sidebar';
 
@@ -23,6 +24,7 @@ const MainLayout = ({ children, sidebarTransparent }) => {
     </div>
   );
 };
+
 MainLayout.propTypes = {
   children: PropTypes.node.isRequired,
   transparent: PropTypes.bool,
